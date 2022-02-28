@@ -7,14 +7,14 @@ function HogList({ hogs, isClicked, sortByWeight, sortByName }) {
     return isClicked === hog.greased.toString();
   });
 
-  if (sortByWeight === "Ascending") {
+  if (sortByWeight === "Ascending")
     filteredHogs.sort((a, b) => a.weight - b.weight);
-  } else if (sortByWeight === "Descending")
+  else if (sortByWeight === "Descending")
     filteredHogs.sort((a, b) => b.weight - a.weight);
 
-  if (sortByName === "A-Z")
-    filteredHogs.sort((a, b) => (a.name > b.name ? 1 : -1));
-  else if (sortByName === "Z-A")
+  if (sortByName === "Z-A")
+    filteredHogs.sort((a, b) => (a.name < b.name ? 1 : -1));
+  else if (sortByName === "A-Z")
     return filteredHogs.sort((a, b) => (a.name < b.name ? 1 : -1));
 
   const hogTiles = filteredHogs.map((hog) => (
