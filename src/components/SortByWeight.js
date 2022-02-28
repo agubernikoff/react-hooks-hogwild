@@ -1,13 +1,13 @@
 import React from "react";
 
-function Sort({ type, handleClick }) {
+function SortByWeight({ handleClick }) {
   return (
     <div>
-      Sort by {type}:<button onClick={handleClick}>Unsorted</button>
+      Sort by Weight:<button onClick={handleClick}>Unsorted</button>
       <button onClick={handleClick}>Ascending</button>
       <button onClick={handleClick}>Descending</button>
     </div>
   );
 }
 
-export default Sort;
+export default SortByWeight;

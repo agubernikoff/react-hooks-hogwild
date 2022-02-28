@@ -1,11 +1,22 @@
 import React from "react";
 import HogTile from "./HogTile";
 
-function HogList({ hogs, isClicked }) {
+function HogList({ hogs, isClicked, sortByWeight, sortByName }) {
   const filteredHogs = hogs.filter((hog) => {
     if (isClicked === "All") return true;
     return isClicked === hog.greased.toString();
   });
+
+  if (sortByWeight === "Ascending") {
+    filteredHogs.sort((a, b) => a.weight - b.weight);
+  } else if (sortByWeight === "Descending")
+    filteredHogs.sort((a, b) => b.weight - a.weight);
+
+  if (sortByName === "A-Z")
+    filteredHogs.sort((a, b) => (a.name > b.name ? 1 : -1));
+  else if (sortByName === "Z-A")
+    return filteredHogs.sort((a, b) => (a.name < b.name ? 1 : -1));
+
   const hogTiles = filteredHogs.map((hog) => (
     <HogTile
       key={hog.name}
